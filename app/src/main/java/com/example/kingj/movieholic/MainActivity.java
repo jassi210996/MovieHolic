@@ -51,8 +51,8 @@ public class MainActivity extends AppCompatActivity
         viewPager.setAdapter(moviesPageAdapter);
 
         TabLayout tabLayout = findViewById(R.id.tabLayout);
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
-
     }
 
     @Override
