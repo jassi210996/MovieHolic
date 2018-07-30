@@ -13,11 +13,14 @@ import java.util.List;
 
 public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
 
-    List<NowPlayingMovies> movies;
+    List<Result> movies;
     Context context;
+    String url="http://image.tmdb.org/t/p/w780/";
+    MovieClickListener listener;
 
-    MoviesAdapter(Context context,List<NowPlayingMovies> movies)
+    MoviesAdapter(Context context,List<Result> movies,MovieClickListener listener)
     {
+        this.listener=listener;
         this.context=context;
         this.movies=movies;
     }
@@ -33,15 +36,27 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MoviesViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull final MoviesViewHolder holder, int position) {
 
-        NowPlayingMovies nowPlayingMovies = movies.get(position);
-        List<Result> result = nowPlayingMovies.getResults();
-        Result movie = result.get(position);
-        holder.title.setText(movie.getTitle());
-        String imageUrl = movie.getPosterPath();
-
-        Picasso.with(context).load(imageUrl).into(holder.poster);
+        Result nowPlayingMovies = movies.get(position);
+//        Result result = nowPlayingMovies.getResults();
+//        Result movie = result.get(position);
+        holder.title.setText(nowPlayingMovies.getTitle());
+        holder.ratings.setText(nowPlayingMovies.getVoteAverage()+"");
+        String imageUrl =nowPlayingMovies.getPosterPath();
+        if(imageUrl==null)
+        {
+            holder.poster.setImageResource(R.drawable.image_not_available);
+        }
+        else {
+            Picasso.with(context).load(url + imageUrl).into(holder.poster);
+        }
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.onMovieClicked(v,holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override

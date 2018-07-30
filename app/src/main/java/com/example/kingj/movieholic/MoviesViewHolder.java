@@ -10,10 +10,12 @@ public class MoviesViewHolder extends RecyclerView.ViewHolder {
     TextView title;
     ImageView poster;
     View itemView;
+    TextView ratings;
 
     public MoviesViewHolder(View itemView) {
         super(itemView);
         this.itemView=itemView;
+        ratings=itemView.findViewById(R.id.rating);
         title=itemView.findViewById(R.id.textView);
         poster=itemView.findViewById(R.id.imageView);
 

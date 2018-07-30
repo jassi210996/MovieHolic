@@ -1,8 +1,8 @@
 package com.example.kingj.movieholic;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -25,14 +25,17 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class TopRatedFragment extends Fragment {
+public class Popular_fragment extends Fragment {
+
 
     RecyclerView recyclerView;
     ProgressBar progressBar,more;
     MoviesAdapter adapter;
     NowPlayingMovies result;
     long page=1;
+    String type="popular";
     Boolean isScrolling = false;
+    String ID_K="id";
     int currentItems;
     int totalItems;
     long totalPages;
@@ -40,7 +43,7 @@ public class TopRatedFragment extends Fragment {
 
     List<Result> movies=new ArrayList<>();
 
-    public TopRatedFragment() {
+    public Popular_fragment() {
         // Required empty public constructor
     }
 
@@ -49,9 +52,9 @@ public class TopRatedFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View output = inflater.inflate(R.layout.fragment_top_rated, container, false);
+        View output= inflater.inflate(R.layout.fragment_popular_fragment, container, false);
 
-        recyclerView=output.findViewById(R.id.topRatedRecyclerView);
+        recyclerView=output.findViewById(R.id.popularRecyclerView);
         progressBar=output.findViewById(R.id.progressbar);
         more=output.findViewById(R.id.moreMovies);
 
@@ -61,7 +64,12 @@ public class TopRatedFragment extends Fragment {
         adapter=new MoviesAdapter(getContext(), movies, new MovieClickListener() {
             @Override
             public void onMovieClicked(View view, int position) {
-
+                Intent intent = new Intent(getContext(),Details_Activity.class);
+                Result movieResult = movies.get(position);
+                String backDrop=movieResult.getBackdropPath();
+                long id = movieResult.getId();
+                intent.putExtra(ID_K,id);
+                startActivity(intent);
             }
         });
         recyclerView.setAdapter(adapter);
@@ -69,10 +77,7 @@ public class TopRatedFragment extends Fragment {
         final GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
 
-//
-//        String sPage = (String) page;
-
-        Call<NowPlayingMovies> call=ApiClient.getService().getTopRated(page);
+        Call<NowPlayingMovies> call=ApiClient.getService().getNowplaying(type,page);
 
         call.enqueue(new Callback<NowPlayingMovies>() {
             @Override
@@ -129,28 +134,18 @@ public class TopRatedFragment extends Fragment {
                     page=page+1;
                     isScrolling=false;
                     more.setVisibility(View.VISIBLE);
-
                     fetchData(page);
-//                    new Handler().postDelayed(new Runnable() {
-//                        @Override
-//                        public void run() {
-//                            fetchData(page);
-//                        }
-//                    },2000);
-
                     //datafetch
                 }
-
             }
         });
-
 
         return output;
     }
 
     void fetchData( long page1)
     {
-        Call<NowPlayingMovies> call=ApiClient.getService().getTopRated(page1);
+        Call<NowPlayingMovies> call=ApiClient.getService().getNowplaying(type,page1);
 
         call.enqueue(new Callback<NowPlayingMovies>() {
             @Override
@@ -162,9 +157,6 @@ public class TopRatedFragment extends Fragment {
                     result=response.body();
 
                     more.setVisibility(View.GONE);
-//                    for(int i=0;i<result.getResults().size();i++) {
-//                        movies.add(result.getResults().get(i));
-//                    }
                     movies.addAll(result.getResults());
                     adapter.notifyDataSetChanged();
                 }
@@ -184,5 +176,6 @@ public class TopRatedFragment extends Fragment {
         });
 
     }
+
 
 }

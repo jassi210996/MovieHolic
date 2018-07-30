@@ -6,6 +6,8 @@
     <color name="black">#000000</color>
     <color name="whiteSmoke">#FFFFFF</color>
     <color name="red">#FF0000</color>
-    <color name="grey">#404040</color>
+    <color name="darkRed">#CC0000</color>
+    <color name="lightRed">#F59A9A</color>
+    <color name="grey">#2B2929</color>
     <color name="darkgrey">#202020</color>
 </resources>

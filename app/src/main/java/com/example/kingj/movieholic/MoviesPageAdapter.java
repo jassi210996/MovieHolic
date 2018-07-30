@@ -24,21 +24,18 @@ public class MoviesPageAdapter extends FragmentPagerAdapter {
         }
         else if(position==2)
         {
-            return new NowTrendingFragment();
+            return new Popular_fragment();
         }
         else if(position==3)
         {
             return new TopRatedFragment();
         }
-        else if(position==4)
-        {
-            return new TopImdb();
-        }
+
         return null;
     }
 
     @Override
     public int getCount() {
-        return 5;
+        return 4;
     }
 }
