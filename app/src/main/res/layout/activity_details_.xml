@@ -35,6 +35,13 @@
                     android:id="@+id/imageViewBack"
                     />
 
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@android:color/black"
+                    android:alpha="0.25"
+                    />
+
             </FrameLayout>
 
             <android.support.v7.widget.Toolbar
@@ -58,15 +65,6 @@
         app:layout_anchorGravity="bottom|end"
         app:srcCompat="@android:drawable/ic_dialog_email" />
 
-    <ImageView
-        android:id="@+id/posterImageView"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginLeft="30dp"
-        app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="bottom|start"
-        app:srcCompat="@android:drawable/ic_dialog_email" />
-
     <ProgressBar
         android:id="@+id/backdropProgressBar"
         android:layout_width="wrap_content"
@@ -74,8 +72,9 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/red"
         android:indeterminateTintMode="src_atop"
+        android:visibility="visible"
         app:layout_anchor="@id/app_bar"
-        app:layout_anchorGravity="center"/>
+        app:layout_anchorGravity="center" />
 
     <ProgressBar
         android:id="@+id/contentProgressBar"
@@ -84,6 +83,7 @@
         android:indeterminate="true"
         android:indeterminateTint="@color/red"
         android:indeterminateTintMode="src_atop"
+        android:visibility="gone"
         app:layout_anchor="@id/toolbar_layout"
         app:layout_anchorGravity="center" />
 </android.support.design.widget.CoordinatorLayout>

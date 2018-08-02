@@ -85,9 +85,7 @@ public class UpcomingFragment extends Fragment {
                     result=response.body();
 
                     progressBar.setVisibility(View.GONE);
-                    for(int i=0;i<result.getResults().size();i++) {
-                        movies.add(result.getResults().get(i));
-                    }
+                    movies.addAll(result.getResults());
                     adapter.notifyDataSetChanged();
                     totalPages=result.getTotalPages();
                 }
