@@ -1,4 +1,4 @@
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Cast;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,6 +7,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kingj.movieholic.Pojo.Cast;
+import com.example.kingj.movieholic.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -45,7 +47,7 @@ public class CastAdapter extends RecyclerView.Adapter<CastViewHolder> {
         else {
             Picasso.with(context).load(url + castImage).into(holder.castImageView);
         }
-        holder.castTextView.setText(castN);
+        holder.castTextView.setText("the");
 
     }
 

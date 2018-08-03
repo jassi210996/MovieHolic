@@ -1,4 +1,4 @@
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Movies;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.kingj.movieholic.MovieClickListener;
+import com.example.kingj.movieholic.Pojo.Result;
+import com.example.kingj.movieholic.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -18,7 +21,7 @@ public class MoviesAdapter extends RecyclerView.Adapter<MoviesViewHolder> {
     String url="http://image.tmdb.org/t/p/w780/";
     MovieClickListener listener;
 
-    MoviesAdapter(Context context,List<Result> movies,MovieClickListener listener)
+    public MoviesAdapter(Context context, List<Result> movies, MovieClickListener listener)
     {
         this.listener=listener;
         this.context=context;

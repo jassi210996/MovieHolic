@@ -1,8 +1,7 @@
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Fragments;
 
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,6 +12,13 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
+
+import com.example.kingj.movieholic.ApiClient;
+import com.example.kingj.movieholic.MovieClickListener;
+import com.example.kingj.movieholic.Movies.MoviesAdapter;
+import com.example.kingj.movieholic.Pojo.NowPlayingMovies;
+import com.example.kingj.movieholic.Pojo.Result;
+import com.example.kingj.movieholic.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -72,7 +78,7 @@ public class TopRatedFragment extends Fragment {
 //
 //        String sPage = (String) page;
 
-        Call<NowPlayingMovies> call=ApiClient.getService().getTopRated(page);
+        Call<NowPlayingMovies> call= ApiClient.getService().getTopRated(page);
 
         call.enqueue(new Callback<NowPlayingMovies>() {
             @Override

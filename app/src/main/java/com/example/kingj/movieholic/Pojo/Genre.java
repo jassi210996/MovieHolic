@@ -1,5 +1,5 @@
 
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Pojo;
 
 import com.google.gson.annotations.Expose;
 

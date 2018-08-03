@@ -1,9 +1,11 @@
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Movies;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.kingj.movieholic.R;
 
 public class MoviesViewHolder extends RecyclerView.ViewHolder {
 

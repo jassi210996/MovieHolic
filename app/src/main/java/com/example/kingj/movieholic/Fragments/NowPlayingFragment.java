@@ -1,4 +1,4 @@
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Fragments;
 
 
 import android.content.Intent;
@@ -14,6 +14,14 @@ import android.widget.AbsListView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.kingj.movieholic.ApiClient;
+import com.example.kingj.movieholic.Details_Activity;
+import com.example.kingj.movieholic.MovieClickListener;
+import com.example.kingj.movieholic.Movies.MoviesAdapter;
+import com.example.kingj.movieholic.Pojo.NowPlayingMovies;
+import com.example.kingj.movieholic.Pojo.Result;
+import com.example.kingj.movieholic.R;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,17 +33,16 @@ import retrofit2.Response;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Popular_fragment extends Fragment {
-
+public class NowPlayingFragment extends Fragment {
 
     RecyclerView recyclerView;
     ProgressBar progressBar,more;
     MoviesAdapter adapter;
     NowPlayingMovies result;
     long page=1;
-    String type="popular";
+    String ID_K="Id";
+    String type="now_playing";
     Boolean isScrolling = false;
-    String ID_K="id";
     int currentItems;
     int totalItems;
     long totalPages;
@@ -43,7 +50,7 @@ public class Popular_fragment extends Fragment {
 
     List<Result> movies=new ArrayList<>();
 
-    public Popular_fragment() {
+    public NowPlayingFragment() {
         // Required empty public constructor
     }
 
@@ -52,16 +59,18 @@ public class Popular_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View output= inflater.inflate(R.layout.fragment_popular_fragment, container, false);
 
-        recyclerView=output.findViewById(R.id.popularRecyclerView);
+
+
+        View output = inflater.inflate(R.layout.fragment_now_playing, container, false);
+        recyclerView=output.findViewById(R.id.recyclerView);
         progressBar=output.findViewById(R.id.progressbar);
         more=output.findViewById(R.id.moreMovies);
 
         progressBar.setVisibility(View.VISIBLE);
 
 
-        adapter=new MoviesAdapter(getContext(), movies, new MovieClickListener() {
+        adapter=new MoviesAdapter(getContext(),movies, new MovieClickListener() {
             @Override
             public void onMovieClicked(View view, int position) {
                 Intent intent = new Intent(getContext(),Details_Activity.class);
@@ -77,7 +86,10 @@ public class Popular_fragment extends Fragment {
         final GridLayoutManager layoutManager = new GridLayoutManager(getContext(),2);
         recyclerView.setLayoutManager(layoutManager);
 
-        Call<NowPlayingMovies> call=ApiClient.getService().getNowplaying(type,page);
+//
+//        String sPage = (String) page;
+
+        Call<NowPlayingMovies> call= ApiClient.getService().getNowplaying(type,page);
 
         call.enqueue(new Callback<NowPlayingMovies>() {
             @Override
@@ -138,6 +150,7 @@ public class Popular_fragment extends Fragment {
             }
         });
 
+
         return output;
     }
 
@@ -174,6 +187,5 @@ public class Popular_fragment extends Fragment {
         });
 
     }
-
 
 }

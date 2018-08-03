@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -17,6 +16,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.kingj.movieholic.Cast.CastAdapter;
+import com.example.kingj.movieholic.Pojo.Cast;
+import com.example.kingj.movieholic.Pojo.CreditsPojo;
+import com.example.kingj.movieholic.Pojo.Crew;
+import com.example.kingj.movieholic.Pojo.DetailPojo;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;

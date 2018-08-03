@@ -1,5 +1,5 @@
 
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Pojo;
 
 import java.util.List;
 //import javax.annotation.Generated;

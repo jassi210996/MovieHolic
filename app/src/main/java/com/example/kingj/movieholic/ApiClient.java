@@ -19,7 +19,7 @@ public class ApiClient {
         }
         return retrofit;
     }
-    static MoviesService getService() {
+    public static MoviesService getService() {
         if (service == null) {
             service = getInstance().create(MoviesService.class);
 

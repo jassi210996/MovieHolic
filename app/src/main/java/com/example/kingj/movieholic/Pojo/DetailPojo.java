@@ -1,23 +1,30 @@
 
-package com.example.kingj.movieholic;
+package com.example.kingj.movieholic.Pojo;
 
+import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-import java.util.List;
 
-//@Generated("net.hexar.json2pojo")
-@SuppressWarnings("unused")
-public class Result {
+
+public class DetailPojo {
 
     @Expose
     private Boolean adult;
     @SerializedName("backdrop_path")
     private String backdropPath;
-    @SerializedName("genre_ids")
-    private List<Long> genreIds;
+    @SerializedName("belongs_to_collection")
+    private Object belongsToCollection;
+    @Expose
+    private Long budget;
+    @Expose
+    private List<Genre> genres;
+    @Expose
+    private String homepage;
     @Expose
     private Long id;
+    @SerializedName("imdb_id")
+    private String imdbId;
     @SerializedName("original_language")
     private String originalLanguage;
     @SerializedName("original_title")
@@ -28,8 +35,22 @@ public class Result {
     private Double popularity;
     @SerializedName("poster_path")
     private String posterPath;
+    @SerializedName("production_companies")
+    private List<ProductionCompany> productionCompanies;
+    @SerializedName("production_countries")
+    private List<ProductionCountry> productionCountries;
     @SerializedName("release_date")
     private String releaseDate;
+    @Expose
+    private Long revenue;
+    @Expose
+    private Long runtime;
+    @SerializedName("spoken_languages")
+    private List<SpokenLanguage> spokenLanguages;
+    @Expose
+    private String status;
+    @Expose
+    private String tagline;
     @Expose
     private String title;
     @Expose
@@ -55,12 +76,36 @@ public class Result {
         this.backdropPath = backdropPath;
     }
 
-    public List<Long> getGenreIds() {
-        return genreIds;
+    public Object getBelongsToCollection() {
+        return belongsToCollection;
     }
 
-    public void setGenreIds(List<Long> genreIds) {
-        this.genreIds = genreIds;
+    public void setBelongsToCollection(Object belongsToCollection) {
+        this.belongsToCollection = belongsToCollection;
+    }
+
+    public Long getBudget() {
+        return budget;
+    }
+
+    public void setBudget(Long budget) {
+        this.budget = budget;
+    }
+
+    public List<Genre> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<Genre> genres) {
+        this.genres = genres;
+    }
+
+    public String getHomepage() {
+        return homepage;
+    }
+
+    public void setHomepage(String homepage) {
+        this.homepage = homepage;
     }
 
     public Long getId() {
@@ -69,6 +114,14 @@ public class Result {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public String getImdbId() {
+        return imdbId;
+    }
+
+    public void setImdbId(String imdbId) {
+        this.imdbId = imdbId;
     }
 
     public String getOriginalLanguage() {
@@ -111,12 +164,68 @@ public class Result {
         this.posterPath = posterPath;
     }
 
+    public List<ProductionCompany> getProductionCompanies() {
+        return productionCompanies;
+    }
+
+    public void setProductionCompanies(List<ProductionCompany> productionCompanies) {
+        this.productionCompanies = productionCompanies;
+    }
+
+    public List<ProductionCountry> getProductionCountries() {
+        return productionCountries;
+    }
+
+    public void setProductionCountries(List<ProductionCountry> productionCountries) {
+        this.productionCountries = productionCountries;
+    }
+
     public String getReleaseDate() {
         return releaseDate;
     }
 
     public void setReleaseDate(String releaseDate) {
         this.releaseDate = releaseDate;
+    }
+
+    public Long getRevenue() {
+        return revenue;
+    }
+
+    public void setRevenue(Long revenue) {
+        this.revenue = revenue;
+    }
+
+    public Long getRuntime() {
+        return runtime;
+    }
+
+    public void setRuntime(Long runtime) {
+        this.runtime = runtime;
+    }
+
+    public List<SpokenLanguage> getSpokenLanguages() {
+        return spokenLanguages;
+    }
+
+    public void setSpokenLanguages(List<SpokenLanguage> spokenLanguages) {
+        this.spokenLanguages = spokenLanguages;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getTagline() {
+        return tagline;
+    }
+
+    public void setTagline(String tagline) {
+        this.tagline = tagline;
     }
 
     public String getTitle() {
